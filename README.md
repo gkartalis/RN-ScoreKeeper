@@ -15,7 +15,8 @@
 - add react-navigation
 - add settings in order to configure buttons
 
-![RN - Score Keeper Landscape](screenshots/Screenshot_Landscape.jpg)
-
-![RN - Score Keeper Portrait](screenshots/Screenshot_Portrait.jpg)
+### Landscape Screenshot:
+<img alt="RN - Score Keeper Landscape" src="screenshots/Screenshot_Landscape.jpg" width="600">
+### Portrait Screenshot:
+<img alt="RN - Score Keeper Portrait" src="screenshots/Screenshot_Portrait.jpg" width="300">
 
