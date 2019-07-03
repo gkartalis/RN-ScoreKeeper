@@ -1,9 +1,9 @@
-#RN - Score Keeper
+# RN - Score Keeper
 #### A simple score keeper app created with expo (react-native)
 
 ## Running the project:
 - clone the project
-- `cd RN-ScoreKeeper
+- `cd RN-ScoreKeeper`
 - `npm i` or `yarn`
 - `npm run start` or `yarn start`
 - enjoy!
