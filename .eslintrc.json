@@ -1,0 +1,40 @@
+
+{
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "plugins": [
+    "react",
+    "react-native"
+  ],
+  "ecmaFeatures": {
+    "jsx": true
+  },
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "rules": {
+    "react/no-did-mount-set-state": 0,
+    "react/no-direct-mutation-state": 2,
+    "react/jsx-uses-vars": 2,
+    "react/jsx-no-bind": [2, {
+      "allowArrowFunctions": true
+    }],
+    "no-undef": 2,
+    "semi": 2,
+    "react/prop-types": 2,
+    "quotes": ["error", "single"],
+    "react/jsx-no-duplicate-props": 2,
+    "react-native/no-inline-styles": 2,
+    "indent": ["error", 2],
+    "eol-last": ["error", "always"]
+  },
+  "globals": {
+    "GLOBAL": false,
+    "it": false,
+    "expect": false,
+    "describe": false,
+    "__DEV__": true,
+    "require": true
+   }
+}
