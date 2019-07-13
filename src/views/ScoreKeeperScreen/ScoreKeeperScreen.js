@@ -1,47 +1,54 @@
 import React from 'react';
 import { View } from 'react-native';
-import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import PlayerScore from '../../components/PlayerScore/';
 import ScoreHeader from '../../components/ScoreHeader';
-import { appLayout, scoreChanged} from '../../actions/actionCreators';
+import { styles } from './styles';
 
-class ScoreKeeperScreen extends React.Component {
+const ScoreKeeperScreen = ({ score, settings, scoreChanged, isPortrait, appLayout }) => {
   
-  _onLayout = event => this.props.appLayout(event.nativeEvent.layout);
-  
-  render() {
-    const { score, settings, scoreChanged, isPortrait } = this.props;
-    return (
-      <View onLayout={this._onLayout} style={{ flex: 1, backgroundColor: '#000000'}}>
-        <ScoreHeader round={0}/>
-        <View style={isPortrait ? {flex: 2} : {flex: 2, flexDirection: 'row'}}>
-          <PlayerScore
-            isRed={true}
-            score={score.p1}
-            playerName={settings.p1name}
-            scoreChanged={scoreChanged}
-            playerKey={'p1'}
-            settings={settings}
-          />
-          <PlayerScore
-            isRed={false}
-            score={score.p2}
-            playerName={settings.p2name}
-            scoreChanged={scoreChanged}
-            playerKey={'p2'}
-            settings={settings}
-          />
-        </View>
-        {isPortrait && <View style={{flex: 0.1}}/>}
+  const _onLayout = event => appLayout(event.nativeEvent.layout);
+  return (
+    <View onLayout={_onLayout} style={styles.container}>
+      <ScoreHeader round={0}/>
+      <View
+        style={
+          isPortrait ?
+            styles.innerContainer
+            : styles.rowContainer
+        }
+      >
+        <PlayerScore
+          isRed={true}
+          score={score.p1}
+          playerName={settings.p1name}
+          scoreChanged={scoreChanged}
+          playerKey={'p1'}
+          settings={settings}
+        />
+        <PlayerScore
+          isRed={false}
+          score={score.p2}
+          playerName={settings.p2name}
+          scoreChanged={scoreChanged}
+          playerKey={'p2'}
+          settings={settings}
+        />
       </View>
-    )
-  }
-}
+      {
+        isPortrait &&
+        <View style={styles.bottomSpace}/>
+      }
+    </View>
+  );
+};
 
-const mapStateToProps = state => ({
-  isPortrait: state.ui.isPortrait,
-  score: state.score,
-  settings: state.settings
-});
+ScoreKeeperScreen.propTypes = {
+  score: PropTypes.object,
+  settings: PropTypes.object,
+  scoreChanged: PropTypes.func,
+  appLayout: PropTypes.func,
+  isPortrait: PropTypes.bool
+};
 
-export default connect(mapStateToProps, {appLayout, scoreChanged})(ScoreKeeperScreen);
+export default ScoreKeeperScreen;
