@@ -2,7 +2,6 @@ import { APP_LAYOUT_CHANGED, P1_SCORE_CHANGED, P2_SCORE_CHANGED } from './';
 
 const appLayout = layout => 
   dispatch => {
-      console.log('layout ', layout)
       if (layout.height > layout.width) {
         dispatch({
           type: APP_LAYOUT_CHANGED,
